@@ -1,4 +1,4 @@
-namespace OpenGLGame.Models
+namespace OpenGLGame.Graphics.Models
 {
     static class ModelsGallery
     {

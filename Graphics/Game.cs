@@ -5,20 +5,21 @@ using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
 using OpenTK.Graphics.OpenGL4;
 
-using OpenGLGame.Models;
-using OpenGLGame.Utils;
-using OpenGLGame.Mesh;
-using OpenGLGame.Camera;
+using OpenGLGame.Graphics;
+using OpenGLGame.Graphics.Models;
+using OpenGLGame.Graphics.Objects;
+using OpenGLGame.Graphics.Camera;
 
 namespace OpenGLGame
 {
-    class Window : GameWindow
+    class Game : GameWindow
     {
         private Shader shader;
         private StaticCamera camera;
         private MeshObject cube;
+        private double time;
 
-        public Window(int width, int height, string title)
+        public Game(int width, int height, string title)
             : base(GameWindowSettings.Default, new NativeWindowSettings() { Size = new Vector2i(width, height), Title = title})
         {}
 
@@ -26,6 +27,8 @@ namespace OpenGLGame
         {
             GL.ClearColor(0f, 0f, 0f, 1f);
             GL.Enable(EnableCap.DepthTest);
+
+            time = 0.0;
 
             shader = new Shader("assets/shaders/shader.vert", "assets/shaders/shader.frag");
             cube = new MeshObject(ModelsGallery.Cube);
@@ -38,8 +41,11 @@ namespace OpenGLGame
         {
             if (KeyboardState.IsKeyReleased(Keys.Escape))
                 Close();
-        
+
+            time += e.Time;
+
             cube.Rotation.Y += (float)e.Time * 0.1f;
+            camera.Position = new Vector3((float)MathHelper.Cos(-time + 1f), (float)MathHelper.Sin(time) + 1f, (float)MathHelper.Cos(3 * time) + 1.5f);
 
             base.OnUpdateFrame(e);
         }

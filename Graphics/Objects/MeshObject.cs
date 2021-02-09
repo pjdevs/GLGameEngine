@@ -2,7 +2,7 @@ using System;
 using OpenTK.Mathematics;
 using OpenTK.Graphics.OpenGL4;
 
-namespace OpenGLGame.Mesh
+namespace OpenGLGame.Graphics.Objects
 {
     class MeshObject
     {

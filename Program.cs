@@ -1,4 +1,4 @@
-﻿using System;
+﻿using OpenGLGame.Graphics;
 
 namespace OpenGLGame
 {
@@ -6,7 +6,7 @@ namespace OpenGLGame
     {
         static void Main(string[] args)
         { 
-            using (Window w = new Window(640, 480, "Hey I'm a title"))
+            using (Game w = new Game(640, 480, "Hey I'm a title"))
             {
                 w.Run();
             }

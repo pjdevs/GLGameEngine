@@ -1,6 +1,6 @@
 using OpenTK.Mathematics;
 
-namespace OpenGLGame.Camera
+namespace OpenGLGame.Graphics.Camera
 {
     class StaticCamera : Camera
     {
